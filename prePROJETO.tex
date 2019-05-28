@@ -1,0 +1,298 @@
+\documentclass[12pt,openright,oneside,a4paper,ruledheader,pnumromarab,english]{abntex2}
+
+\usepackage[alf,abnt-full-initials=yes,abnt-emphasize=bf]{abntex2cite} 	% Citações padrão ABNT
+\usepackage{cmap}				
+\usepackage{lmodern}					
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} %Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}	        % Usado pela Ficha catalográfica
+\usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage[table]{xcolor}		% Pacote para a definição de novas cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{lipsum}
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+%\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage{hyperref}
+\usepackage{float} % PARA TENTAR AJUSTAR AS TABELAS E FIGURTAS
+\usepackage{comment}	   		% Para criar blocos de Comentários
+\usepackage{chngcntr}	   		% Para remover reset na contagem (chapter) de Figuras, Ilustrações, Quadros...
+\usepackage{listings}			% Pacote com as configurações das sintaxe de Linguagens de programação
+\usepackage{abntexufersa}		% Pacote com as configurações de estilo da UFERSA.
+\usepackage{multirow}			% Pacote para tabelas com Celulas com Linhas Multiplas
+\usepackage{booktabs}			% Pacote para tabelas organizadas
+\usepackage{colortbl}			% Pacote para colorir linhas de tabelas
+%\usepackage{natbib}
+\usepackage{pgffor}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+\usepackage{blindtext}
+%\usepackage{cite}
+\usepackage{xspace}
+% package used by \citep and \citet
+%\usepackage[sort&compress,square,comma,authoryear]{natbib}
+
+
+
+
+% ************************************************************
+% ********** DEFINIÇÃO DE COMANDOS PERSONALIZADOS
+% ************************************************************
+% Definindo novas cores
+\definecolor{verde}{rgb}{0.25,0.5,0.35}
+\definecolor{jpurple}{rgb}{0.5,0,0.35}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{oldmauve}{rgb}{0.4, 0.19, 0.28}
+\definecolor{lightgray}{gray}{0.9}
+
+
+
+%\tipotrabalho{Monografia (Trabalho de Conclusão de Curso)}
+
+
+
+\definecolor{blue}{RGB}{41,5,195}
+
+\setlength{\parindent}{1.3cm}
+
+
+
+\renewcommand{\thesection}{\arabic{section}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{document}
+%\imprimircapa
+
+\begin{capa}
+ 
+\begin{minipage}{0.25\textwidth}
+\includegraphics[height=0.9cm]{logo-ufersa.png} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.74\textwidth}
+UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO \par
+CENTRO MULTIDISCIPLINAR DE PAU DOS FERROS
+
+  \MakeUppercase  \imprimircurso
+\end{minipage}
+
+\vspace{1cm}
+\hspace{-1cm}
+ \textbf{TÍTULO DO PROJETO:} 
+
+
+\vspace{0.25cm}
+\hspace{-1cm}
+ \textbf{NOME DE ALUNO:} %Aluno aq
+
+
+%\instituicao{%
+% UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO\par
+% CENTRO MULTIDISCIPLINAR DE PAU DOS FERROS
+ %}
+%
+ 
+
+\vspace{0.25cm}
+\hspace{-1cm}
+ \textbf{NOME DO ORIENTADOR:} Prof. ...
+
+\vspace{1cm}
+\hspace{-1.25cm}Projeto apresentado ao Colegiado do Curso de Engenharia de Computação da Universidade Federal Rural do Semi-Árido, como requisito parcial para elaboração do Trabalho de Conclusão de Curso no semestre 2019.1. Neste documento consta:
+
+\begin{itemize}
+    \item A solicitação de matrícula na disciplina de TCC;
+    \item O termo de aceite do professor orientador e de ciência do discente;
+    \item A descrição do projeto a ser executado;
+\end{itemize}
+
+\vspace{1cm}
+\begin{table}[!htb]
+\begin{tabular}{|l|}
+\hline
+\multicolumn{1}{|c|}{{\color[HTML]{333333} \textbf{PARA USO EXCLUSIVO DA COORDENAÇÃO DE CURSO:}}}            \\ \hline
+                                                                                                             \\
+                                                                                                             \\
+(  \hspace{0.5cm}   ) Aprovado pelo Colegiado de Curso em: \_\_\_\_\_\_/ \_\_\_\_\_\_/ \_\_\_\_\_\_              \\
+                                            \\
+(    \hspace{0.5cm}  ) Não aprovado.                                                                              \\
+                                                                                                     \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_            \\
+\multicolumn{1}{|c|}{Assinatura do Coordenador de Curso}                                          \\ 
+                                                                                                     \\
+\hline
+\end{tabular}
+\end{table}
+
+
+   
+     \vspace{3cm}
+    \begin{center}
+       Pau dos Ferros- RN
+    \end{center}
+    \begin{center}
+        2019
+    \end{center}
+  \footnote{PROJETO DE TCC, Bruno José Nogueira Dias, semestre 2019.1}
+  \end{capa}
+%}
+
+\frenchspacing 
+\begin{center}
+    \textbf{SOLICITAÇÃO DE MATRÍCULA NO TRABALHO DE CONCLUSÃO DE CURSO}
+\end{center}
+
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{DADOS DO ALUNO-REQUERENTE}} \\ \hline
+NOME:         &  \hspace{7cm}      & FONE:           &    \hspace{3cm}           \\ \hline
+CURSO:        &        & TURNO:          &      \\ \hline
+e-mail:       &        & MATRÍCULA:      &               \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{-0.5cm}
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{DADOS DO PROFESSOR ORIENTADOR}}                   \\ \hline
+\textbf{NOME:}                           & \hspace{6cm} & Mat. SIAPE:& \hspace{1.8cm} \textbf{} \\ \hline
+\textbf{Depart. de vínculo:}& \multicolumn{3}{l|}{}               \\ \hline
+\textbf{e-mail:}                         & \multicolumn{3}{l|}{}               \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{-0.5cm}
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{DADOS DO PROFESSOR COORIENTADOR}}        \\ \hline
+\textbf{NOME:}                           & \hspace{6cm} & Mat. SIAPE:& \hspace{1.8cm} \textbf{} \\ \hline
+\textbf{Depart. de vínculo:}& \multicolumn{3}{l|}{}               \\ \hline
+\textbf{e-mail:}                         & \multicolumn{3}{l|}{}               \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.25cm}
+\hspace{-1.25cm}
+\textbf{TERMO DE CIÊNCIA E SOLICITAÇÃO DE MATRÍCULA EM TCC}
+\vspace{0.5cm}
+
+\hspace{-1.25cm}Eu,\hspace{6cm} , na qualidade de aluno formando do curso de Engenharia de Computação desta instituição, venho através deste solicitar junto à coordenação do meu curso a minha matrícula na disciplina de Trabalho de Conclusão de Curso - TCC no semestre 2019.1. Declaro ter ciência das normas para realização do TCC. Atenciosamente,
+\vspace{0.25cm}
+
+\begin{table}[!htb]
+\begin{tabular}{ll}
+\multicolumn{1}{l}{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} & Pau dos Ferros–RN, \_\_ de \_\_\_\_ de 2019 \\
+Assinatura do aluno-requerente                                                                      &                                                            
+\end{tabular}
+\end{table}
+
+\vspace{-.5cm}
+\begin{center}
+  \textbf{TERMO DE ACEITE DO ORIENTADOR}  
+\end{center}
+
+\vspace{-.25cm}
+\hspace{-1.25cm}Eu, \hspace{6cm}, na qualidade de professor desta instituição, lotado no Campus Pau dos Ferros, declaro que aceito o compromisso de orientador do acadêmico descrito acima na disciplina de Trabalho de Conclusão de Curso - TCC no semestre 2018.1, caso sua matrícula venha a ser efetivada pela coordenação do curso ao qual o aluno está vinculado. Declaro ter ciência das normas para realização do TCC. Atenciosamente,
+
+\begin{table}[!htb]
+\begin{tabular}{ll}
+\multicolumn{1}{l}{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_} & Pau dos Ferros–RN, \_\_ de \_\_\_\_ de 2019 \\
+Assinatura do professor orientador                                                                     &                                                            
+\end{tabular}
+\end{table}
+
+\footnote{PROJETO DE TCC, Nome do Aluno, semestre 2019.1}
+
+
+
+%\pdfbookmark[0]{\contentsname}{toc}
+%\tableofcontents
+%\cleardoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%\autor{BRUNO JOSÉ NOGUEIRA DIAS}
+%\mainmatter
+\vspace{0.25cm}
+\textbf{TÍTULO DO PROJETO:}  % Digite o titulo aqui 
+
+\vspace{0.25cm}
+\textbf{ALUNO:} % \imprimirautor
+
+\vspace{0.25cm}
+\textbf{ORIENTADOR:} %Orientador aqui
+
+\section{INTRODUÇÃO}
+
+
+\section{Problema}
+
+Segundo \citeonline{IBGEeduca2010}, 
+
+
+\section{Justificativa}
+
+
+
+\section{REFERENCIAL TEÓRICO}
+
+
+\subsection{Tecnologias assistivas}
+
+
+
+
+\section{METODOLOGIA DA PESQUISA} 
+
+
+\section{OBJETIVOS} 
+
+\subsection{Objetivo Geral}
+
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\subsection{Objetivos Específicos}
+
+    \begin{itemize}
+        \item 
+
+        \item 
+\end{itemize}
+
+\section{CRONOGRAMA}
+
+O cronograma está dividido em oito semanas, em que parte inicialmente da delimitação do tema até revisão do texto. Esse cronograma se refere ao pré projeto, fazendo parte inicial do cronograma do trabalho de conclusão do curso. 
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\cellcolor[HTML]{C0C0C0}                                              & \multicolumn{8}{c|}{\cellcolor[HTML]{C0C0C0}\textbf{Semana}}                                                                                                                                                            \\ \cline{2-9} 
+\rowcolor[HTML]{C0C0C0} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\textbf{Atividades}}                  & 1                       & 2                        & 3                       & 4                       & 5                       & 6                       & 7                       & 8                       \\ \hline
+Delimitação do Tema e Problemática                                    & X                       &                          &                         &                         &                         &                         &                         &                         \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+{\color[HTML]{000000} Escrita dos elementos Justificativa, Objetivos} & {\color[HTML]{000000} } & {\color[HTML]{000000} X} & {\color[HTML]{000000} } & {\color[HTML]{000000} } & {\color[HTML]{000000} } & {\color[HTML]{000000} } & {\color[HTML]{000000} } & {\color[HTML]{000000} } \\ \hline
+Definição da Metodologia do Trabalho                                  &                         &                          & X                       &                         &                         &                         &                         &                         \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+Levantamento bibliográfico                                            &                         &                          &                         & X                       & X                       & X                       & X                       &                         \\ \hline
+Revisão do texto                                                      &                         &                          &                         &                         &                         &                         &                         & X                       \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+%\postextual
+%\bibliographystyle{abbrv}
+\bibliographystyle{abntex2-alf}
+\bibliography{refe}
+\end{document}
