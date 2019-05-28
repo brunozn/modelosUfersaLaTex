@@ -1,0 +1,371 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade XXXX
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is SEU_NOME, SEU_EMAIL
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---
+
+\ProvidesPackage{abntexufersa}[2016/09/27 - Criação desta customizacao do abnTeX2]
+
+\renewcommand{\ABNTEXchapterfont}{\rmfamily}
+
+
+% Comandos de dados - instituicao
+\providecommand{\imprimircurso}{}
+\newcommand{\curso}[1]{\renewcommand{\imprimircurso}{#1}}
+
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}
+ 
+\begin{minipage}{0.25\textwidth}
+\includegraphics[height=0.9cm]{Imagens_Gerais/logo-ufersa.png} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.74\textwidth}
+UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO \par
+CENTRO MULTIDISCIPLINAR DE PAU DOS FERROS
+
+  \MakeUppercase  \imprimircurso
+\end{minipage}
+
+\center
+      
+
+    
+     
+%     \vspace*{1cm}
+   \vfill
+   
+    { \imprimirautor}
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont \imprimirtitulo
+    \end{center}
+    \vfill
+
+    \MakeUppercase\imprimirlocal
+
+    \imprimirdata
+
+    \vspace*{1cm}
+  \end{capa}
+}
+
+
+% folha de rosto 
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+{\ABNTEXchapterfont\imprimirautor}
+
+
+    \vspace*{1cm}
+
+%{\ABNTEXchapterfont\imprimirautor}
+
+\vspace*{\fill}\vspace*{\fill}
+
+
+
+\begin{center}
+\imprimirtitulo
+\end{center}
+
+\vspace*{\fill}
+
+\abntex@ifnotempty{\imprimirpreambulo}{%
+  \hspace{.45\textwidth}
+  \begin{minipage}{.5\textwidth}
+  \SingleSpacing
+  \imprimirpreambulo
+  
+  \vspace{0.5cm}
+  {\imprimirorientadorRotulo~\imprimirorientador\par}
+  
+  %\vspace{0.5cm}
+  {\imprimircoorientadorRotulo~\imprimircoorientador}
+  \end{minipage}%
+  \vspace*{\fill}
+}%
+
+
+
+\vspace*{\fill}
+
+
+{\MakeUppercase \imprimirlocal}
+
+\par
+
+{\imprimirdata}
+\vspace*{1cm}
+\end{center}
+}
+
+%\makeatother
+
+\makeindex
+
+%\makeatletter
+
+
+%==============================================================================
+% Resumo e Abstracts
+%==============================================================================
+
+\renewenvironment{resumo}[1][\resumoname]{%
+   \PRIVATEbookmarkthis{#1}
+   \renewcommand{\abstractnamefont}{\bfseries \MakeUppercase  }
+   \renewcommand{\abstractname}{\bfseries \MakeUppercase #1}
+   \begin{abstract}
+  }{\end{abstract}\PRIVATEclearpageifneeded}
+  
+
+
+%==============================================================================
+% Margens do texto
+%==============================================================================
+\newlength{\ii@topmargin}\setlength{\ii@topmargin}{30mm}
+\newlength{\ii@pagenummargin}\setlength{\ii@pagenummargin}{20mm}
+\newlength{\ii@bottommargin}\setlength{\ii@bottommargin}{20mm}
+\newlength{\ii@sidemargin}\setlength{\ii@sidemargin}{30mm}
+\setlength{\marginparwidth}{25mm}
+
+% ajuste das medidas verticais
+\setlength{\topmargin}{\ii@pagenummargin}
+        \addtolength{\topmargin}{-1em} % isto é +- a altura do núm. da página
+        \addtolength{\topmargin}{-1in}
+\setlength{\headheight}{1em}
+\setlength{\headsep}{\ii@topmargin}
+        \addtolength{\headsep}{-\ii@pagenummargin}
+\setlength{\textheight}{\paperheight}
+        \addtolength{\textheight}{-\ii@topmargin}
+        \addtolength{\textheight}{-\ii@bottommargin}
+\setlength{\footskip}{\ii@bottommargin}
+
+% ajuste das medidas horizontais
+\setlength{\oddsidemargin}{\ii@sidemargin}
+        \addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{\paperwidth}
+        \addtolength{\textwidth}{-2\ii@sidemargin}
+\setlength{\marginparsep}{\ii@sidemargin}
+        \addtolength{\marginparsep}{-\marginparwidth}
+        \setlength{\marginparsep}{.5\marginparsep}
+
+%==============================================================================
+% Ajuste do sumário (nada indentado) 
+%==============================================================================
+\newlength{\ii@chapnumindent}\setlength{\ii@chapnumindent}{1.8em}
+
+\renewcommand*{\l@chapter}[2]
+               {
+%\@dottedtocline{1}{0em}{2.8em}{\uppercase{#1}}{\hss #2}
+        \addpenalty{-\@highpenalty}
+        \vskip 0.5ex\@plus\p@
+        \setlength\@tempdima{3.7em}
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode\bfseries\sffamily
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+%      esta é a definicao original da classe report:
+      \uppercase{#1}\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\uppercase{\hss #1}}{#2}
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
+        \penalty\@highpenalty
+        \endgroup
+}
+
+\renewcommand*{\l@section}[2]
+              {
+%\@dottedtocline{1}{0em}{2.8em}{\uppercase{#1}}{\hss #2}
+        \addpenalty{-\@highpenalty}
+        \vskip 0.5ex \@plus\p@
+        \setlength\@tempdima{3.7em}
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode\sffamily
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+%      esta é a definicao original da classe report:
+      \uppercase{#1}\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\uppercase{#1}}{#2}
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
+        \penalty\@highpenalty
+        \endgroup
+}
+
+              
+\renewcommand*{\l@subsection}[2]
+{
+%\@dottedtocline{2}{0em}{3.7em}
+        \addpenalty{-\@highpenalty}
+       \vskip 0.5ex \@plus\p@
+        \setlength\@tempdima{3.7em}
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode\bfseries\sffamily
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+%      esta é a definicao original da classe report:
+       #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\uppercase{#1}}{#2}
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
+        \penalty\@highpenalty
+        \endgroup
+}
+
+
+\renewcommand*{\l@subsubsection}[2]
+{
+%\@dottedtocline{2}{0em}{3.7em}
+        \addpenalty{-\@highpenalty}
+        \vskip 0.5ex \@plus\p@
+        \setlength\@tempdima{3.7em}
+        \begingroup
+        \parindent \z@ \rightskip \@pnumwidth
+        \parfillskip -\@pnumwidth
+        \leavevmode\sffamily
+        \advance\leftskip\@tempdima
+        \hskip -\leftskip
+%      esta é a definicao original da classe report:
+       #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\uppercase{#1}}{#2}
+%        \@dottedtocline{0}{0em}{\ii@chapnumindent}{\MakeUppercase{#1}}{#2}
+        \penalty\@highpenalty
+        \endgroup
+}
+
+\newif\if@aftertoc
+\@aftertocfalse
+\renewcommand{\tableofcontents}{%
+        \chapter*{\contentsname}
+        \@starttoc{toc}\@aftertoctrue%
+}
+
+%==============================================================================
+
+%==============================================================================
+% Formatação dos capítulos.
+% Os comandos \@chapter e \@schapter são redefinidos para que a
+% numeração de páginas seja correta (deve aparecer somente a partir do
+% primeiro capítulo do texto, mas não nas páginas iniciais de
+% capítulos).
+% Os comandos \@makechapterhead e \@makeschapterhead fazem a
+% formatação dos títulos propriamente ditos.
+%==============================================================================
+
+ 
+\newcommand{\ii@chapterfont}{\@setfontsize\Large{12}{12}}
+
+\def\@chapapp{}
+
+\def\@chapter[#1]#2{%
+        \refstepcounter{chapter}%
+        \addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp\thechapter}#1#2}%
+        \pagestyle{ufrn}\let\ps@plain\ps@ufrn
+        \@makechapterhead{#2}\@afterheading
+}
+
+\def\@makechapterhead#1{%
+\reset@font\noindent{\ii@chapterfont\sffamily\textbf{\@chapapp\thechapter\hspace{1em}\MakeUppercase{#1}}\par}
+        \addvspace{12pt}
+}
+
+ 
+\def\@schapter#1{%
+        \if@aftertoc\addcontentsline{toc}{chapter}{#1}\fi%
+        \addtocontents{lof}{\protect\addvspace{10\p@}}
+        \addtocontents{lot}{\protect\addvspace{10\p@}}
+        \@makeschapterhead{#1}\@afterheading
+}
+
+ 
+\def\@makeschapterhead#1{%
+        \vspace*{0in}
+	\reset@font\centerline{\ii@chapterfont\sffamily\textbf{\MakeUppercase{#1}}}
+        \addvspace{12pt}
+}
+
+
+
+
+
+
+\renewcommand{\appendix}[1][\appendixname]{%
+        \setcounter{chapter}{0}%
+        \renewcommand{\thechapter}{\Alph{chapter}}%
+        \setcounter{tocdepth}{0}%
+        \@captionlistingfalse%
+        \gdef\@chapapp{\MakeUppercase{#1}\space}%
+        \addtocontents{toc}{%
+          \settowidth{\ii@chapnumindent}{{\sffamily\textbf{\@chapapp}}}
+          \addtolength{\ii@chapnumindent}{1.8em}
+        }%
+}
+
+
+
+
+%==============================================================================
+% Formatação das seções
+%==============================================================================
+\setcounter{secnumdepth}{5}
+
+\renewcommand{\section}{%
+        \@startsection{section}{1}{0pt}{12pt}{9pt}{\reset@font\uppercase}
+}
+\renewcommand{\subsection}{%
+        \@startsection{subsection}{2}{0pt}{12pt}{6pt}{\reset@font\bfseries}
+}
+\renewcommand{\subsubsection}{%
+        \@startsection{subsubsection}{3}{0pt}{12pt}{9pt}{\reset@font}
+}
+\renewcommand{\paragraph}{%
+        \@startsection{paragraph}{4}{0pt}{12pt}{6pt}{\reset@font}
+}
+\renewcommand{\subparagraph}{%
+      \@startsection{subparagraph}{5}{0pt}{1ex}{-1em}{\reset@font\bfseries}
+}
+
+%==============================================================================
+% Numeração das páginas
+%==============================================================================
+\def\ps@ufrn{
+        \let\@oddfoot\@empty
+        \let\@evenfoot\@empty
+        \def\@evenhead{ \hspace*{\fill}{\small\thepage}}
+        %\def\@evenhead{{\small\thepage}}
+        \def\@oddhead{\hspace*{\fill}{\small\thepage}}
+}
+%\pagestyle{empty}
+%\let\ps@plain\ps@empty
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---
+
+

@@ -1,0 +1,310 @@
+\documentclass[12pt,openright,oneside,a4paper,ruledheader,pnumromarab,english]{abntex2}
+
+\usepackage[alf,abnt-full-initials=yes,abnt-emphasize=bf]{abntex2cite} 	% Citações padrão ABNT
+\usepackage{cmap}				
+\usepackage{lmodern}					
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} %Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}	        % Usado pela Ficha catalográfica
+\usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage[table]{xcolor}		% Pacote para a definição de novas cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{lipsum}
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+%\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage{hyperref}
+\usepackage{float} % PARA TENTAR AJUSTAR AS TABELAS E FIGURTAS
+\usepackage{comment}	   		% Para criar blocos de Comentários
+\usepackage{chngcntr}	   		% Para remover reset na contagem (chapter) de Figuras, Ilustrações, Quadros...
+\usepackage{listings}			% Pacote com as configurações das sintaxe de Linguagens de programação
+\usepackage{abntexufersa}		% Pacote com as configurações de estilo da UFERSA.
+\usepackage{multirow}			% Pacote para tabelas com Celulas com Linhas Multiplas
+\usepackage{booktabs}			% Pacote para tabelas organizadas
+\usepackage{colortbl}			% Pacote para colorir linhas de tabelas
+\usepackage{pgffor}
+\usepackage{textcomp} %o simbolo de marca registrada
+
+
+
+% ************************************************************
+% ********** DEFINIÇÃO DE COMANDOS PERSONALIZADOS
+% ************************************************************
+% Definindo novas cores
+\definecolor{verde}{rgb}{0.25,0.5,0.35}
+\definecolor{jpurple}{rgb}{0.5,0,0.35}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{oldmauve}{rgb}{0.4, 0.19, 0.28}
+\definecolor{lightgray}{gray}{0.9}
+
+% ************************************************************
+% ********** Configurando layout para mostrar codigos Java
+
+\newcommand{\estiloJava}{
+\lstset{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{jpurple}\bfseries,
+    stringstyle=\color{red},
+    commentstyle=\color{verde},
+    morecomment=[s][\color{blue}]{/**}{*/},
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    backgroundcolor=\color{cyan!10},
+    breakautoindent=true,
+    captionpos=b,
+    xleftmargin=0pt,
+    tabsize=2
+}}
+
+
+\titulo{Titulo do trabalho...}
+
+\autor{Digite seu nome}
+\local{Pau dos Ferros/RN}
+\data{ANO}
+
+\orientador{NomedoOrientador, Prof. Dr.}
+\coorientador{nomew, Prof. Dr.}
+
+\instituicao{%
+ UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO\par
+ CENTRO MULTIDISCIPLINAR DE PAU DOS FERROS
+ }
+\curso{Bacharelado em Engenharia de Computação}
+ 
+\tipotrabalho{Monografia (Trabalho de Conclusão de Curso)}
+
+\preambulo{Monográfica apresentada a Universidade Federal Rural do Semi-árido - UFERSA, Campus Pau dos Ferros para a obtenção do título de Bacharel em Engenharia de Computação.}
+
+\definecolor{blue}{RGB}{41,5,195}
+
+\setlength{\parindent}{1.3cm}
+
+\begin{document}
+
+\frenchspacing 
+\pretextual
+
+\imprimircapa
+
+\imprimirfolhaderosto*
+
+% ************************************************************
+% ********** FICHA CATALOGRÁFICA
+% ************************************************************
+
+\begin{fichacatalografica}
+FICHA CATALOGRÁFICA AQUI... 
+
+\textit{ELA SERÁ GERADA PELO SITE DA UFERSA}
+	\vspace*{\fill}				% Posição vertical
+%\begin{figure}
+%    \centering
+%    \includegraphics[scale=0.8]{imagens/Fcima.png}
+    %\caption{Caption}/
+%    \label{ficha}
+%\end{figure}
+\begin{center}					% Centralizado
+
+% Aqui não se usou \vfill porque o \vfill é construído internamente com
+% o comando \vspace. Espaços verticais no início da folha com \vspace
+% são ignorados. Para que isto não ocorra deve-se usar o \vspace*
+% \vspace*{\fill} é como se fosse um \vfill*
+\vspace*{\fill}
+
+%\textbf{Catalogação da Publicação na Fonte}\\[1ex]
+
+%\textbf{Biblioteca Universitária Campus Pau dos Ferros (BIBLIOPF-UFERSA)}\\[0.5cm]
+
+\vspace{2ex}
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.9]{ficha.png}
+%    %\caption{Caption}
+%    \label{ficha}
+%\end{figure}
+
+%\begin{tabular}{|p{0.9\linewidth}|} \hline
+%\\
+%Dias, Bruno José Nogueira.\\
+%\hspace{1em}  \imprimirtitulo  / \imprimirautor. --
+%	\imprimirlocal, \imprimirdata \\
+%\hspace{1em} \pageref{LastPage} p. : il. \\
+%\\
+%\hspace{1em} \imprimirtipotrabalho . \\
+%\\
+%\hspace{1em} Orientador: \imprimirorientador \\
+%\hspace{1em} Co-orientador: \imprimircoorientador \\
+%\\
+%\hspace{1em}	
+%		1. Eletrocardiograma.
+%		2. Transformada Wavelet.
+%		3. Família Daubechies.
+%		I. \imprimirorientador.
+%		II. Universidade Federal Rural do Semi-árido. 
+%		III. Campus Pau dos Ferros. Curso de Ciência e Tecnologia.
+%		IV. Título\\ 	
+%RN/UF/BIBLIOPF \hfill CDU 616.12-008.318 (Fornecido pela Biblioteca)\\ %\hline
+%\end{tabular} 
+
+\end{center}
+
+\end{fichacatalografica}
+
+
+% ************************************************************
+% ********** FOLHA DE APROVAÇÃO
+% ************************************************************
+
+\begin{folhadeaprovacao}
+
+   \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    {\ABNTEXchapterfont \imprimirtitulo}
+    \vspace*{\fill}
+    
+    \hspace{.4\textwidth}
+    \begin{minipage}{.55\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+    
+   Trabalho aprovado em \imprimirlocal, XX de \textit{Mês} de \textit{ano}:
+
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.4]{imagens/aafolha1.png}
+%    %\caption{Caption}
+%    \label{ass}
+%\end{figure}
+   \assinatura{\imprimirorientador \\ Presidente} 
+   \assinatura{\imprimircoorientador \\ Professor Avaliador}
+   \assinatura{Nome do terceiro avaliador \\ Professor Avaliador}
+  
+   \begin{center}
+    \vspace*{0.5cm}
+    {\imprimirlocal}
+    \par
+    {\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+
+%==============================================================================
+% Redefinição do conteúdo das listas de tabelas
+%==============================================================================
+
+\renewcommand{\listfigurename}{\normalsize\textbf{LISTA DE FIGURAS}}
+\renewcommand{\listtablename}{\normalsize\textbf{ LISTA DE TABELAS}}
+
+% ************************************************************
+% ********** DEDICATÓRIA
+% ************************************************************
+
+\begin{dedicatoria}
+   \vspace*{\fill}
+	\begin{flushright}
+
+\noindent \emph{A meu tio Rafael Reuber Nogueira.}
+
+	\end{flushright}
+\end{dedicatoria}
+% ************************************************************
+% ********** AGRADECIMENTOS
+% ************************************************************
+\begin{agradecimentos}
+
+Inicialmente, agradeço aos Deuses 
+
+\end{agradecimentos}
+
+% ************************************************************
+% ********** EPÍGRAFE
+% ************************************************************
+
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+	
+%	\textit{O conhecimento nos faz necessário.} (Che Guevara)
+
+\textit{O céu é o limite para as pessoas que buscam algo grande, para aquelas que querem algo maior, o infinito e além}
+
+%	\textit{Elemento opcional colocado após os agradecimentos, \\ 
+%	onde o autor apresenta uma citação (deve ser indicada a autoria)\\
+%	relacionada com a matéria tratada no corpo do trabalho. \\ 
+%	O autor pode também optar pela inserção de epígrafes \\ 
+%	nas folhas de abertura das seções primárias.}\\
+%	(John Bellamy Foster, The Rift)
+	\end{flushright}
+
+\end{epigrafe}
+
+% ************************************************************
+% ********** RESUMO
+% ************************************************************
+
+\begin{resumo} 
+ 
+Aqui vou digitar o resumo do trabalho...
+
+ \vspace{\onelineskip}
+\noindent
+ \textbf{Palavras-chaves}: Palavra1. Palavra2. Palavra3.
+\end{resumo}
+
+% ************************************************************
+% ********** ABSTRACT
+% ************************************************************
+
+\begin{resumo}[Abstract]
+\begin{otherlanguage*}{english}
+Aqui vou digitar o Abstract do trabalho...
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Key-words}: Key1. Key2. Key3.
+ \end{otherlanguage*}
+\end{resumo}
+
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents
+\cleardoublepage
+
+%\mainmatter
+
+\include{capitulos/cap1-introducao}
+\include{capitulos/cap2-fund-teorica}
+\include{capitulos/cap3-fund-teorica}
+\include{capitulos/cap4-Desenvolvimento}
+\include{capitulos/cap5-Metologia}
+\include{capitulos/cap6-consideracoes}
+
+\bibliographystyle{abntex2-alf}
+
+\bibliography{refe}
+
+%\postextual
+
+\end{document}
